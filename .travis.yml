@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- v8
+deploy:
+  provider: npm
+  email: tdgroen@zaibot.net
+  api_key:
+    secure: PmaeAFN/6ALXSqD7O2FdN4580oOq6/iXX1/mRDxOJDYpBt+ehPVGTUDIK/J/r8z8OdsxauRkRYtM+n9ZmDYcKVQ2aIXiUFkxD6fInCiv20smYL1BE0X0WkVaOiGfMBW5tHxnqTQViVYNKehl1zZoLBx9uZ/ttpceCU7SM5MgflVyC8ODP8GEQVNZ1pJpNssdrSTBcshYjjwamI8Z5gC08xcFSLRVN6yTxNlUD/DufCcf4XADgQWgXJgboydwGqxeaGogainci0MDLz8nylhzQmbllzgSli4Vdv8uYJtlPby1RzZK2zFN2YU2MXsMDNSV0re3GqzdMQwTYE/+X4hxbj+8hQxWj/i7X7hNEfytb2x2KlUHyZa5UHZy/6xDVQ7IQHm2rbDOXNAdqOGjeb7iF/J9FfJPmUXLgyOllsKflBHKz4E8xBq+BX+9nE0gFUPhYeMmeX6kdfc+iQ54lKFLIvMaH+DU8IbQvXJYvCpGdgHtZnnrO/gtiWVpuejxfnh0jxF12vfZ5ZHbSoc0V2klv0EK9gdQpI1ckX2Ub0MSYEJjqEA/Kxkk/afXtBHVv45eE4ReT/CKJUwn0Wy9qUDCx7TusRX0ELTWCqdZZMHJ0qmTYnDxMFJkCUSRbI7+7nlED8IF4WHVw9LgZuk/TuKIpRQqTQZQrRi6ahN7ig7BAlY=
+  on:
+    tags: true
+    repo: Zaibot/ts-transforms

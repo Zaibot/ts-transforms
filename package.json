@@ -1,0 +1,43 @@
+{
+  "name": "@zaibot/ts-transforms",
+  "version": "0.0.0",
+  "description": "TypeScript transforms",
+  "author": {
+    "name": "Tobias de Groen",
+    "email": "tdgroen@zaibot.net"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "mocha ./src/**.spec.ts --require ts-node/register",
+    "test:watch": "npm test -- --watch",
+    "prepare": "npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zaibot/ts-transforms.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zaibot/ts-transforms/issues"
+  },
+  "homepage": "https://github.com/Zaibot/ts-transforms#readme",
+  "dependencies": {
+    "ts-simple-ast": "^9.1.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.7.2"
+  }
+}
