@@ -6,7 +6,10 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "declaration": true,
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "types": [
+      "jest"
+    ]
   },
   "include": [
     "src"

@@ -1,5 +1,4 @@
 import { addTypeToUnion, applyTransformations } from '.';
-import { expect } from 'chai';
 
 const normalize = (text: string) => text.replace(/[\r\n ]+/g, ' ').trim();
 
@@ -12,7 +11,7 @@ describe('addTypeToUnion', () => {
         const output = `export type test = one;`;
         const result = transform(input);
 
-        expect(normalize(result)).to.equal(normalize(output));
+        expect(normalize(result)).toBe(normalize(output));
     });
 
     it('skips when present', () => {
@@ -23,7 +22,7 @@ describe('addTypeToUnion', () => {
         const output = `export type test = one;`;
         const result = transform(input);
 
-        expect(normalize(result)).to.equal(normalize(output));
+        expect(normalize(result)).toBe(normalize(output));
     });
     
     it('adds to existing', () => {
@@ -34,7 +33,7 @@ describe('addTypeToUnion', () => {
         const output = `export type test = one & two;`;
         const result = transform(input);
 
-        expect(normalize(result)).to.equal(normalize(output));
+        expect(normalize(result)).toBe(normalize(output));
     });
     
     it('adds to existing (3 total)', () => {
@@ -45,6 +44,6 @@ describe('addTypeToUnion', () => {
         const output = `export type test = one & two & three;`;
         const result = transform(input);
 
-        expect(normalize(result)).to.equal(normalize(output));
+        expect(normalize(result)).toBe(normalize(output));
     });
 });
