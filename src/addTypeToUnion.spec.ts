@@ -5,10 +5,10 @@ const normalize = (text: string) => text.replace(/[\r\n ]+/g, ' ').trim();
 describe('addTypeToUnion', () => {
     it('adds', () => {
         const transform = applyTransformations([
-            addTypeToUnion('test', 'one')
+            addTypeToUnion('test', '1')
         ]);
         const input = ``;
-        const output = `export type test = one;`;
+        const output = `export type test = 1;`;
         const result = transform(input);
 
         expect(normalize(result)).toBe(normalize(output));
@@ -16,32 +16,32 @@ describe('addTypeToUnion', () => {
 
     it('skips when present', () => {
         const transform = applyTransformations([
-            addTypeToUnion('test', 'one')
+            addTypeToUnion('test', '1')
         ]);
-        const input = `export type test = one;`;
-        const output = `export type test = one;`;
+        const input = `export type test = 1;`;
+        const output = `export type test = 1;`;
         const result = transform(input);
 
         expect(normalize(result)).toBe(normalize(output));
     });
-    
+
     it('adds to existing', () => {
         const transform = applyTransformations([
-            addTypeToUnion('test', 'two')
+            addTypeToUnion('test', '2')
         ]);
-        const input = `export type test = one;`;
-        const output = `export type test = one & two;`;
+        const input = `export type test = 1;`;
+        const output = `export type test = 1 & 2;`;
         const result = transform(input);
 
         expect(normalize(result)).toBe(normalize(output));
     });
-    
+
     it('adds to existing (3 total)', () => {
         const transform = applyTransformations([
-            addTypeToUnion('test', 'three')
+            addTypeToUnion('test', '3')
         ]);
-        const input = `export type test = one & two;`;
-        const output = `export type test = one & two & three;`;
+        const input = `export type test = 1 & 2;`;
+        const output = `export type test = 1 & 2 & 3;`;
         const result = transform(input);
 
         expect(normalize(result)).toBe(normalize(output));

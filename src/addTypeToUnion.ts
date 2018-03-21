@@ -2,14 +2,16 @@ import { SourceFile, SyntaxKind } from "ts-simple-ast";
 
 export const addTypeToUnion = (type: string, additional: string) => (a: SourceFile) => {
     const astExport = a.getTypeAlias(type);
-    if (!astExport) { return; }
-    const intersection = astExport.getFirstChildByKindOrThrow(SyntaxKind.IntersectionType);
-    const syntax = intersection.getFirstChildIfKindOrThrow(SyntaxKind.SyntaxList);
-    const types = syntax.getText().match(/\w+/g);
+    if (!astExport) {
+        a.addTypeAlias({ name: type, type: additional, isExported: true });
+        return;
+    }
+    const astType = astExport.getTypeNodeOrThrow();
+    const types = astType.getText().match(/\w+/g);
     if (!types) { return; }
     if (types.some(x => x === additional)) { return; }
     types.push(additional);
-    syntax.replaceWithText((writer) => {
+    astType.replaceWithText((writer) => {
         for (let i = 0, ii = types.length; i < ii; i++) {
             if (i > 0) {
                 writer.newLine();
