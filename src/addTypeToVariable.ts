@@ -1,8 +1,17 @@
-import { SourceFile } from "ts-simple-ast";
+import { SourceFile, VariableDeclarationType } from "ts-simple-ast";
 
 export const addTypeToVariable = (name: string, additional: string) => (a: SourceFile) => {
-    const astExport = a.getVariableDeclarationOrThrow(name);
-    if (!astExport) { return; }
+    const astExport = a.getVariableDeclaration(name);
+    if (!astExport) {
+        a.addVariableStatement({
+            declarationType: VariableDeclarationType.Const,
+            isExported: true,
+            declarations: [
+                { name: name, type: additional, initializer: 'TODO' }
+            ]
+        })
+        return;
+    }
     const intersection = astExport.getTypeNode();
     if (!intersection) { return; }
     const types = intersection.getText().match(/\w+/g);

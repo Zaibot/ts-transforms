@@ -9,7 +9,7 @@ describe('addTypeToVariable', () => {
             addTypeToVariable('test', 'one')
         ]);
         const input = ``;
-        const output = `export const test: one = 1;`;
+        const output = `export const test: one = TODO;`;
         const result = transform(input);
 
         expect(normalize(result)).toBe(normalize(output));
